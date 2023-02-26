@@ -1,0 +1,6 @@
+[submodule "Board-Secret"]
+	path = Board-Secret
+	url = https://github.com/honolhy/Board-Secret.git
+[submodule "Spring-Board-Secret-re"]
+	path = Spring-Board-Secret-re
+	url = https://github.com/honolhy/Spring-Board-Secret-re.git
