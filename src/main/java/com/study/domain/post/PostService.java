@@ -20,7 +20,9 @@ public class PostService {
      */
     @Transactional
     public Long savePost(final PostRequest params) {
+
         postMapper.save(params);
+
         return params.getId();
     }
 
@@ -40,7 +42,9 @@ public class PostService {
      */
     @Transactional
     public Long updatePost(final PostRequest params) {
+
         postMapper.update(params);
+
         return params.getId();
     }
 
@@ -50,7 +54,9 @@ public class PostService {
      * @return PK
      */
     public Long deletePost(final Long id) {
+
         postMapper.deleteById(id);
+
         return id;
     }
 
