@@ -37,6 +37,7 @@ public class PostController {
         return "redirect:/post/list.do";
     }
 
+    // 게시글 리스트 페이지
     @GetMapping("/post/list.do")
     public String openPostList(Model model) {
 
@@ -46,6 +47,7 @@ public class PostController {
         return "post/list";
     }
 
+    // 게시글 상세 페이지
     @GetMapping("post/view.do")
     public String openPostView(@RequestParam final Long id, Model model) {
 
@@ -60,6 +62,14 @@ public class PostController {
     public String updatePost(final PostRequest params) {
 
         postService.updatePost(params);
+
+        return "redirect:/post/list.do";
+    }
+
+    @PostMapping("/post/delete.do")
+    public String deletePost(@RequestParam final Long id) {
+
+        postService.deletePost(id);
 
         return "redirect:/post/list.do";
     }
