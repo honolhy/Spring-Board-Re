@@ -1,6 +1,7 @@
 package com.study.domain.post;
 
 import lombok.RequiredArgsConstructor;
+import lombok.val;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,6 +53,9 @@ public class PostController {
     public String openPostView(@RequestParam final Long id, Model model) {
 
         PostResponse post = postService.findPostById(id);
+        val nlString = System.getProperty("line.separator").toString();
+
+        model.addAttribute("nlString", nlString);
         model.addAttribute("post", post);
 
         return "post/view";
