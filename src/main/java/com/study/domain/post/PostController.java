@@ -1,11 +1,13 @@
 package com.study.domain.post;
 
+import com.study.dto.MessageDto;
 import lombok.RequiredArgsConstructor;
 import lombok.val;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -31,11 +33,13 @@ public class PostController {
 
     // 신규 게시글 생성
     @PostMapping("/post/save.do")
-    public String savePost(final PostRequest params) {
+    public String savePost(final PostRequest params, Model model) {
 
         postService.savePost(params);
+        MessageDto message = new MessageDto("게시글이 생성 되었습니다.",
+                "/post/list.do", RequestMethod.GET, null);
 
-        return "redirect:/post/list.do";
+        return showMessageAndRedirect(message, model);
     }
 
     // 게시글 리스트 페이지
@@ -63,18 +67,29 @@ public class PostController {
 
     // 기존 게시글 수정
     @PostMapping("/post/update.do")
-    public String updatePost(final PostRequest params) {
+    public String updatePost(final PostRequest params, Model model) {
 
         postService.updatePost(params);
+        MessageDto message = new MessageDto("게시글이 수정 되었습니다.",
+                "/post/list.do", RequestMethod.GET, null);
 
-        return "redirect:/post/list.do";
+        return showMessageAndRedirect(message, model);
     }
 
     @PostMapping("/post/delete.do")
-    public String deletePost(@RequestParam final Long id) {
+    public String deletePost(@RequestParam final Long id, Model model) {
 
         postService.deletePost(id);
+        MessageDto message = new MessageDto("게시글이 삭제 되었습니다.",
+                "/post/list.do", RequestMethod.GET, null);
 
-        return "redirect:/post/list.do";
+        return showMessageAndRedirect(message, model);
+    }
+
+    private String showMessageAndRedirect(final MessageDto params, Model model) {
+
+        model.addAttribute("params", params);
+
+        return "common/messageRedirect";
     }
 }
