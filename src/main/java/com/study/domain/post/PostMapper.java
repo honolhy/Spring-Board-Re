@@ -1,5 +1,6 @@
 package com.study.domain.post;
 
+import com.study.common.dto.SearchDto;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -39,15 +40,15 @@ public interface PostMapper {
 
     /**
      * 게시글 리스트 조회
+     * @param params - search conditions
      * @return 게시글 리스트
-     * 여러개의 게시글(PostResponse)을 리스트에 담아 리턴해준다
      */
-    List<PostResponse> findAll();
+    List<PostResponse> findAll(SearchDto params);
 
     /**
      * 게시글 수 카운팅
+     * @param params - search conditions
      * @return 게시글 수
-     * 전체 게시글 수를 조회
      */
-    int count();
+    int count(SearchDto params);
 }
