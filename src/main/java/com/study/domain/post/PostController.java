@@ -9,7 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
@@ -90,5 +92,18 @@ public class PostController {
         model.addAttribute("params", params);
 
         return "common/messageRedirect";
+    }
+
+    // 쿼리 스트링 파라미터를 Map에 담아 반환한다.
+    private Map<String, Object> queryParamsToMap(final SearchDto queryParams) {
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("page", queryParams.getPage());
+        data.put("recordSize", queryParams.getRecordSize());
+        data.put("pageSize", queryParams.getPageSize());
+        data.put("keyword", queryParams.getKeyword());
+        data.put("searchType", queryParams.getSearchType());
+
+        return data;
     }
 }
