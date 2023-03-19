@@ -15,7 +15,7 @@ import java.util.List;
 @SpringBootTest
 public class PostMapperTest {
 
-    /*@Autowired
+    @Autowired
     PostMapper postMapper;
 
     @Test
@@ -50,11 +50,11 @@ public class PostMapperTest {
     void update() {
 
         // 1. 게시글 수정
-        *//*게시글 생성과 마찬가지로 테이블에 데이터를 저장하는 개념이지만
+        /*게시글 생성과 마찬가지로 테이블에 데이터를 저장하는 개념이지만
         없었던 데이터를 생성하는 것인지, 기존 데이터를 수정하는 것인지의 차이가 있다
         이 차이는 PK(id)를 통해 구분한다
         테이블에 새로 생성되는 글은 auto_increment에 의해 자동 생성되지만,
-        게시글을 수정하기 위해서는 수정할 게시글의 PK인 id를 파라미터로 전달해 주어야 한다*//*
+        게시글을 수정하기 위해서는 수정할 게시글의 PK인 id를 파라미터로 전달해 주어야 한다*/
         PostRequest params = new PostRequest();
         params.setId(1L);
         params.setTitle("1번 게시글 제목 수정합니다.");
@@ -79,5 +79,5 @@ public class PostMapperTest {
         System.out.println("삭제 이전의 전체 게시글 개수는 : " + postMapper.findAll().size() + "개입니다.");
         postMapper.deleteById(1L);
         System.out.println("삭제 이후의 전체 게시글 개수는 : " + postMapper.findAll().size() + "개입니다.");
-    }*/
+    }
 }
