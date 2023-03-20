@@ -77,6 +77,7 @@ public class PostController {
         return showMessageAndRedirect(message, model);
     }
 
+    // 게시글 삭제
     @PostMapping("/post/delete.do")
     public String deletePost(@RequestParam final Long id, Model model) {
 
